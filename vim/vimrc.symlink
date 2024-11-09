@@ -1,0 +1,84 @@
+" Set encoding and file formats
+set encoding=utf-8
+set fileformats=unix,dos,mac
+
+" UI Settings
+set number                  " Show line numbers
+set relativenumber          " Show relative line numbers
+set cursorline              " Highlight the current line
+set wrap                    " Enable line wrapping
+set linebreak               " Break lines at word boundaries
+set showmatch               " Highlight matching brackets
+set showcmd                 " Show partial commands in the last line
+set wildmenu                " Enhanced command-line completion
+set lazyredraw              " Only redraw when needed for better performance
+set scrolloff=3             " Keep 3 lines visible above and below cursor
+set signcolumn=yes          " Always show the sign column to prevent text shifting
+
+" Colors and Appearance
+syntax enable               " Enable syntax highlighting
+set background=dark         " Use dark background for compatible themes
+colorscheme desert          " Choose a color scheme (customize as desired)
+
+" Tabs and Indentation
+set tabstop=4               " Set width of a tab character
+set shiftwidth=4            " Set width for auto-indents
+set expandtab               " Convert tabs to spaces
+set autoindent              " Copy indentation from the previous line
+set smartindent             " Enable smart indentation
+
+" Searching
+set ignorecase              " Ignore case when searching
+set smartcase               " Enable case-sensitive search if uppercase is used
+set incsearch               " Show matches as you type
+set hlsearch                " Highlight all search matches
+
+" Key Mappings
+nnoremap <Space> :nohlsearch<CR>  " Clear search highlights with Space
+inoremap jk <Esc>                 " Map 'jk' to escape insert mode quickly
+
+" Clipboard Integration
+set clipboard=unnamedplus   " Use system clipboard for all yank/delete operations
+
+" Backups and Undo
+set undofile                " Enable persistent undo
+set backup                  " Keep a backup file
+set backupdir=~/.vim/backups " Custom directory for backup files
+set undodir=~/.vim/undo      " Custom directory for undo files
+
+" Split Windows
+set splitright              " Open new vertical splits to the right
+set splitbelow              " Open new horizontal splits below
+
+" Enable Mouse Support
+set mouse=a                 " Enable mouse in all modes
+
+" Faster Scrolling
+set ttyfast                 " Speed up terminal response time
+set updatetime=300          " Faster completion timeout (300ms)
+
+" Plugin Management
+" If using Vim-Plug (install with: curl -fLo ~/.vim/autoload/plug.vim --create-dirs \"
+"   https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim)
+call plug#begin('~/.vim/plugged')
+Plug 'preservim/nerdtree'          " File explorer
+Plug 'tpope/vim-commentary'        " Commenting utility
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " Fuzzy finder
+Plug 'junegunn/fzf.vim'            " Fzf integration with Vim
+Plug 'vim-airline/vim-airline'     " Status line enhancement
+Plug 'sheerun/vim-polyglot'        " Syntax support for multiple languages
+call plug#end()
+
+" Plugin Settings
+" NERDTree
+nmap <C-n> :NERDTreeToggle<CR>     " Ctrl+n to toggle NERDTree
+
+" FZF (Fuzzy Finder)
+nnoremap <C-p> :Files<CR>          " Ctrl+p to open file search
+
+" Autocommands
+augroup AutoSourceVimrc
+    autocmd!
+    autocmd BufWritePost ~/.vimrc source ~/.vimrc
+augroup END
+

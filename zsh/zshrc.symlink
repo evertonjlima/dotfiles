@@ -1,0 +1,14 @@
+# Add custom bin folder to PATH
+export PATH="$HOME/bin:$PATH"
+
+# Aliases
+alias ll='ls -la'
+alias gs='git status'
+
+# Set default editor
+export EDITOR=vim
+
+# Source additional configuration files if they exist
+[ -f "$DOTFILES/zsh/aliases.zsh" ] && source "$DOTFILES/zsh/aliases.zsh"
+[ -f "$DOTFILES/zsh/path.zsh" ] && source "$DOTFILES/zsh/path.zsh"
+
