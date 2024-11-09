@@ -106,8 +106,6 @@ find "$DOTFILES_DIR/zsh" -name "*.zsh" | while read -r zsh_file; do
   fi
 done
 
-:
-
 # Completion message
 echo -e "\nDotfiles setup complete!"
 
