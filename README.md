@@ -2,11 +2,6 @@
 
 This repository contains configuration files (dotfiles) for my development environment, including settings for tools like Vim, Zsh, Git, and more. Using this setup allows for a personalized and portable development environment.
 
-## Structure
-
-The repository is organized by tool, with each tool’s configuration files in its own folder:
-repository/ ├── dotfiles/ │ ├── vim/ │ │ ├── vimrc.symlink # Vim configuration │ ├── git/ │ │ ├── gitconfig.symlink # Git configuration │ ├── zsh/ │ │ ├── aliases.zsh # Zsh aliases │ │ ├── path.zsh # Custom paths for Zsh │ └── setup.sh # Setup script for symlinking and installation
-
 
 ### Features
 
