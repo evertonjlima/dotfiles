@@ -1,14 +1,13 @@
+# Setup DOTFILES path
+export DOTFILES="$HOME/Repository/dotfiles"
+
 # Add custom bin folder to PATH
 export PATH="$HOME/bin:$PATH"
-
-# Aliases
-alias ll='ls -la'
-alias gs='git status'
 
 # Set default editor
 export EDITOR=vim
 
-# Source additional configuration files if they exist
-[ -f "$DOTFILES/zsh/aliases.zsh" ] && source "$DOTFILES/zsh/aliases.zsh"
-[ -f "$DOTFILES/zsh/path.zsh" ] && source "$DOTFILES/zsh/path.zsh"
-
+# Source all aliases.zsh files within the $DOTFILES directory
+for alias_file in $(find "$DOTFILES" -name "aliases.zsh" -type f); do
+    source "$alias_file"
+done
