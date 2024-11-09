@@ -1,0 +1,50 @@
+# Ignore the .env file for API keys and other secrets
+.env
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Editor and IDE settings
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Backup files
+*.bak
+*.swp
+*.tmp
+
+# Logs
+*.log
+
+# macOS files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows files
+Desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# Node and NPM files (if you use Node.js scripts)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python virtual environments
+venv/
+.env/
+
+# Ignore compiled output if applicable
+*.pyc
+*.class
+*.o
+*.out
+
+# Ignore Git hooks and related temp files
+.hooks/
+.git/hooks/
+
