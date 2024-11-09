@@ -33,6 +33,48 @@ find "$DOTFILES_DIR" -name "*.symlink" | while read -r file; do
   create_symlink "$file" "$HOME/$filename"
 done
 
+# Install Homebrew if not already installed
+if ! command -v brew &> /dev/null; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if command -v brew &> /dev/null; then
+    echo -e "$CHECKMARK Homebrew installed successfully."
+  else
+    echo -e "$CROSS Failed to install Homebrew."
+  fi
+else
+  echo -e "$CHECKMARK Homebrew is already installed."
+fi
+
+# Install iTerm2 via Homebrew
+if ! brew list --cask iterm2 &> /dev/null; then
+  echo "Installing iTerm2..."
+  brew install --cask iterm2
+
+  if brew list --cask iterm2 &> /dev/null; then
+    echo -e "$CHECKMARK iTerm2 installed successfully."
+  else
+    echo -e "$CROSS Failed to install iTerm2."
+  fi
+else
+  echo -e "$CHECKMARK iTerm2 is already installed."
+fi
+
+# Install Fira Code font via Homebrew
+if ! brew list --cask font-fira-code &> /dev/null; then
+  echo "Installing Fira Code font..."
+  brew tap homebrew/cask-fonts
+  brew install --cask font-fira-code
+
+  if brew list --cask font-fira-code &> /dev/null; then
+    echo -e "$CHECKMARK Fira Code font installed successfully."
+  else
+    echo -e "$CROSS Failed to install Fira Code font."
+  fi
+else
+  echo -e "$CHECKMARK Fira Code font is already installed."
+fi
 
 # Install Vim-Plug if not already installed
 if [ ! -f "$HOME/.vim/autoload/plug.vim" ]; then
@@ -63,6 +105,8 @@ find "$DOTFILES_DIR/zsh" -name "*.zsh" | while read -r zsh_file; do
     echo -e "$CROSS Failed to add $zsh_file to $ZSHRC"
   fi
 done
+
+:
 
 # Completion message
 echo -e "\nDotfiles setup complete!"
